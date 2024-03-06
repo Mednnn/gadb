@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"strconv"
 	"strings"
+
+	log "github.com/ndmsystems/golog"
 )
 
 const AdbServerPort = 5037
@@ -76,6 +78,7 @@ func (c Client) DeviceList() (devices []Device, err error) {
 	}
 
 	lines := strings.Split(resp, "\n")
+	log.Debug(lines)
 	devices = make([]Device, 0, len(lines))
 
 	for i := range lines {
